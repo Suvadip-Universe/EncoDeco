@@ -1,6 +1,7 @@
 
 from math import pow
 import pyperclip
+import base64
 
 def listToString(s):  
     str1 = ""  
@@ -22,29 +23,39 @@ def key_word(k):
     return(s)
 
 def encode(str, keyc):
-    a = []
-    i = 0
-    for x in str:
-        cryp = ord(x) + keyc*pow(-1,i)
-        a.append(chr(int(cryp)))
-        i+=1
-        
-    a = listToString(a)
-    return(a)
+    for i in range(keyc):
+        a = []
+        i = 0
+        for x in str:
+            cryp = ord(x) + keyc*pow(-1,i)
+            a.append(chr(int(cryp)))
+            i+=1
+            
+        a = listToString(a)
+    message_bytes = a.encode('ascii')
+    base64_bytes = base64.b64encode(message_bytes)
+    base64_message = base64_bytes.decode('ascii')
+    #str = base64_message
+    return(base64_message)
 
 def decode(str, keyc):
-    a = []
-    i = 0
-    for x in str:
-        if(x == " "):
-            a.append(" ")
+    message_bytes = str.encode('ascii')
+    base64_bytes = base64.b64decode(message_bytes)
+    str1 = base64_bytes.decode('ascii')
+    for i in range(keyc):
+        a = []
+        i = 0
+        for x in str1:
+            if(x == " "):
+                a.append(" ")
+                i+=1
+                continue
+            cryp = ord(x) - keyc*pow(-1,i)
+            a.append(chr(int(cryp)))
             i+=1
-            continue
-        cryp = ord(x) - keyc*pow(-1,i)
-        a.append(chr(int(cryp)))
-        i+=1
-        
-    a = listToString(a)
+            
+        a = listToString(a)
+        #str = a
     return(a)
     
 def exspace(msgs):
