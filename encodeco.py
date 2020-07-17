@@ -104,12 +104,12 @@ def convert():
             msg = exspace(msg)
             msg = encode(msg, key)
             msg = reverse(msg)
-            print("\nEncoded = ",msg,"\nMessage is automatically copied to clipboard")
+            print("\nEncoded = ",msg,"\n\nMessage is automatically copied to clipboard")
         elif(select == 2):
             msg = reverse(msg)
             msg = decode(msg, key)
             msg = inspace(msg)
-            print("\nDecoded = ",msg,"\nMessage is automatically copied to clipboard")
+            print("\nDecoded = ",msg,"\n\nMessage is automatically copied to clipboard")
                 
         pyperclip.copy(msg)
             
