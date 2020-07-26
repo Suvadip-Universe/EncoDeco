@@ -7,7 +7,7 @@ Date : 18.05.2020
 
 main file is encodeco.py
 
-Distribution for winodws in distribution folder. A readable excutive file.
+Distribution for windows in distribution folder. A readable excutive file.
 
 Encrypto folder contains files, which can be used as a library and it's simply derived also.
 
